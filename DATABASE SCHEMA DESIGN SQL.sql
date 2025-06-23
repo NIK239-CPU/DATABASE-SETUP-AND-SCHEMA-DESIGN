@@ -45,15 +45,33 @@ CREATE TABLE LENDING (
 	 );
 	 GO
 
-/*-- ER DIAGRAM STRUCTURE 
-ENTITIES :
-1) AUTHORS
-2) BOOKS
-3) MEMBERS
-4) LENDING
+🔶 Entities and Relationships
+1. AUTHORS
+Primary Key: AUTHORID
+Attributes: NAME, COUNTRY
 
-RELATIONSHIP :
-1) ONE AUTHOR WRTITE MANY BOOKS (1:N)
-2) ONE MEMBER BORROWS MANY BOOKS THROUGH LENDING (1:N)
-3) ONE BOOK CAN BE LENT MANY TIMES (1:N) WITH LENDING)
+2. BOOK
+Primary Key: BOOKID
+Attributes: TITLE, GENRE, PUBLISHEDYEAR, ISBN
+Foreign Key: AUTHORID → AUTHORS(AUTHORID)
+
+3. MEMBERS
+Primary Key: MEMBERID
+Attributes: FULLNAME, EMAIL, JOINDATE
+
+4. LENDING
+Primary Key: LENDINGID
+Attributes: ISSUEDATE, RETURNDATE
+
+Foreign Keys:
+BOOKID → BOOK(BOOKID)
+MEMBERID → MEMBERS(MEMBERID)
+
+🔗 Relationships
+AUTHORS → BOOK: One-to-Many (One author can write many books)
+BOOK → LENDING: One-to-Many (One book can be lent many times)
+MEMBERS → LENDING: One-to-Many (One member can borrow many books)
+
+
+
 
